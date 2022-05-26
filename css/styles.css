@@ -55,6 +55,15 @@ img {
 .icon {
   fill: currentColor;
 }
+.input {
+  display: block;
+  border-radius: 4px;
+  background-color: transparent;
+  outline: none;
+}
+.footer-input .input:focus {
+  border: 1px solid var(--accent-color);
+}
 /* Header */
 .header {
   border-bottom: 1px solid var(--bottom-line);
@@ -100,7 +109,11 @@ img {
   transition: color var(--timing-function);
 }
 .navigation-link:hover,
-.navigation-link:focus {
+.navigation-link:focus,
+.address-link:hover,
+.address-link:focus,
+.close:hover,
+.close:focus {
   color: var(--accent-color);
 }
 .active {
@@ -427,10 +440,7 @@ img {
 
   transition: color var(--timing-function);
 }
-.address-link:hover,
-.address-link:focus {
-  color: var(--accent-color);
-}
+
 .footer-contacts {
   color: var(--transparent-white);
 }
@@ -442,12 +452,60 @@ img {
   letter-spacing: 0.03em;
   color: var(--white-accent);
 }
+.footer-socials {
+  margin-right: 93px;
+}
 .footer-socials .socials-item {
   background-color: var(--icon-transparent-bg);
   border-radius: 50%;
 }
 .footer-socials .socials-link {
   color: var(--white-accent);
+}
+.footer-form {
+  display: flex;
+  align-items: flex-end;
+}
+.footer-input {
+  margin-right: 12px;
+}
+.footer-form .form-title {
+  display: block;
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--white-accent);
+}
+.footer-input .input {
+  padding-left: 16px;
+  width: 358px;
+  height: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.button-subscribe {
+  position: relative;
+  display: block;
+  width: 200px;
+  height: 50px;
+  padding: 10px 62px 10px 29px;
+  color: var(--white-accent);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.88;
+  letter-spacing: 0.06em;
+  background-color: var(--accent-color);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border: 0;
+  border-radius: 4px;
+}
+.button-subscribe .icon {
+  position: absolute;
+  top: 50%;
+  right: 28px;
+  transform: translateY(-50%);
 }
 /* Portfolio */
 .filter {
