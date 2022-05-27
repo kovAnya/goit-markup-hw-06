@@ -55,15 +55,7 @@ img {
 .icon {
   fill: currentColor;
 }
-.input {
-  display: block;
-  border-radius: 4px;
-  background-color: transparent;
-  outline: none;
-}
-.footer-input .input:focus {
-  border: 1px solid var(--accent-color);
-}
+
 /* Header */
 .header {
   border-bottom: 1px solid var(--bottom-line);
@@ -166,7 +158,8 @@ img {
   width: 696px;
   margin: 0 auto 30px;
 }
-.hero-btn {
+.hero-btn,
+.form-button {
   font-family: inherit;
   font-weight: 700;
   font-size: 16px;
@@ -175,15 +168,19 @@ img {
   color: var(--white-accent);
   background-color: var(--accent-color);
   cursor: pointer;
-  padding: 10px 32px;
   border: none;
   border-radius: 4px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 
   transition: background-color var(--timing-function);
 }
+.hero-btn {
+  padding: 10px 32px;
+}
 .hero-btn:hover,
-.hero-btn:focus {
+.hero-btn:focus,
+.form-button:hover,
+.form-button:focus {
   background-color: var(--button-hover);
 }
 .backdrop {
@@ -202,12 +199,14 @@ img {
   visibility: hidden;
   pointer-events: none;
 }
+
+/* Modal */
 .modal-wrapper {
   position: absolute;
   top: 50%;
   left: 50%;
   width: 528px;
-  height: 581px;
+  padding: 40px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
@@ -230,12 +229,119 @@ img {
   right: 8px;
   width: 30px;
   height: 30px;
+  color: inherit;
   justify-content: center;
   align-items: center;
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
   cursor: pointer;
+  transition: color var(--timing-function);
+}
+.modal-title {
+  margin-bottom: 12px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.15;
+  letter-spacing: 0.03em;
+}
+.field-group {
+  display: block;
+  text-align: left;
+}
+.field-group-label {
+  display: inline-block;
+  margin-bottom: 4px;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.01em;
+  color: var(--secondary-color);
+}
+.field-group-input {
+  position: relative;
+  display: block;
+  margin-bottom: 10px;
+}
+.input,
+.comment {
+  width: 100%;
+  min-height: 40px;
+  background-color: transparent;
+  outline: none;
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+
+  transition: border-color var(--timing-function);
+}
+.input:focus,
+.comment:focus {
+  border-color: var(--accent-color);
+}
+.input:focus + .icon {
+  color: var(--accent-color);
+}
+.field-group-input .input {
+  padding-left: 42px;
+}
+.field-group-input > .icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.comment {
+  resize: none;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+}
+.comment::placeholder {
+  line-height: 1.14;
+  letter-spacing: 0.01em;
+  color: rgba(117, 117, 117, 0.5);
+}
+.field-checkbox-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.icon-check-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin-right: 7px;
+  width: 16px;
+  height: 15px;
+  border-radius: 2px;
+  outline: solid 2px var(--main-color);
+  outline-offset: -2px;
+
+  transition: outline var(--timing-function);
+}
+.icon-check {
+  fill: var(--white-accent);
+  background-color: var(--accent-color);
+  opacity: 0;
+  transition: opacity var(--timing-function);
+}
+.field-checkbox:checked + .icon-check-wrapper {
+  outline-color: var(--accent-color);
+}
+.field-checkbox:checked + .icon-check-wrapper .icon-check {
+  opacity: 1;
+}
+
+.checkbox-label {
+  display: inline-block;
+  line-height: 1.71;
+  letter-spacing: 0.03em;
+  color: var(--secondary-color);
+}
+.agreement-link {
+  color: var(--accent-color);
+}
+.modal-wrapper .form-button {
+  padding: 10px 56px;
 }
 /* Benefits section */
 .benefits-list {
@@ -480,28 +586,18 @@ img {
   color: var(--white-accent);
 }
 .footer-input .input {
-  padding-left: 16px;
-  width: 358px;
-  height: 50px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 15px 0 15px 16px;
+  width: 360px;
+  border-color: rgba(255, 255, 255, 0.3);
 }
-.button-subscribe {
+.footer-input .input:focus {
+  border-color: var(--accent-color);
+}
+.footer-form .form-button {
   position: relative;
-  display: block;
-  width: 200px;
-  height: 50px;
   padding: 10px 62px 10px 29px;
-  color: var(--white-accent);
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 1.88;
-  letter-spacing: 0.06em;
-  background-color: var(--accent-color);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-  border: 0;
-  border-radius: 4px;
 }
-.button-subscribe .icon {
+.footer-form .icon {
   position: absolute;
   top: 50%;
   right: 28px;
