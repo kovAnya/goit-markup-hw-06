@@ -303,6 +303,7 @@ img {
 .field-checkbox-group {
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-bottom: 30px;
 }
 .icon-check-wrapper {
